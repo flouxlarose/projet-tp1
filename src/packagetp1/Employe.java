@@ -37,9 +37,38 @@ public class Employe {
     }
 
     public double impotFederal() {
-        double salaireNet = salaireNetAvantImpot();
-        double impot = salaireNet * impotFederal;
-        return impot;
+        return salaireNetAvantImpot() * impotFederal;
     }
+
+    public double impotProvincial() {
+        return salaireNetAvantImpot() * impotProvincial;
+    }
+
+    public double salaireNetApresImpot() {
+        return salaireNetAvantImpot() - (impotProvincial() + impotFederal());
+    }
+
+    public int joursVacances() {
+        int vacances = 0;
+        char premierNumero = numero.charAt(0);
+        if (premierNumero == '1'){
+            vacances = 5 + anciennete;
+        }
+        else if (premierNumero == '2'){
+            vacances = 10 + anciennete;
+        }
+        else if (premierNumero == '3'){
+            vacances = 15 + anciennete;
+        }
+        else if (premierNumero == '4'){
+            vacances = 20 + anciennete;
+        }
+        return vacances;
+    }
+
+    public void heuresSup(int nombreHeuresSup) {
+        this.nbreHeuresSemaine += nombreHeuresSup;
+    }
+
 
 }

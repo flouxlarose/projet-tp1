@@ -1,5 +1,7 @@
 package packagetp1;
 
+import org.junit.Test;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,15 +34,15 @@ public class TestEmploye1 {
     }
 
     public TestEmploye1() {
-        SpinnerNumberModel snm = new SpinnerNumberModel(0,0,10,1);
+        SpinnerNumberModel snm = new SpinnerNumberModel(0, 0, 10, 1);
         spinnerHeuresSup.setModel(snm);
         bouton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DecimalFormat df = new DecimalFormat ( "0.00");
-                Employe unEmploye = new Employe ( champNom.getText(), champNumero.getText(), Double.parseDouble(champSalaireHoraire.getText()),
+                DecimalFormat df = new DecimalFormat("0.00");
+                Employe unEmploye = new Employe(champNom.getText(), champNumero.getText(), Double.parseDouble(champSalaireHoraire.getText()),
                         Double.parseDouble(champNbHeures.getText()), Integer.parseInt(champAnciennete.getText()));
-                unEmploye.heuresSup((int)spinnerHeuresSup.getValue());
+                unEmploye.heuresSup((int) spinnerHeuresSup.getValue());
                 champSalaireApresImpot.setText(df.format(unEmploye.salaireNetApresImpot()) + "$");
                 champJoursVacances.setText(unEmploye.joursVacances() + " jours");
             }
